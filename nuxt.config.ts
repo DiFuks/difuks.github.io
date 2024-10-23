@@ -18,6 +18,10 @@ export default defineNuxtConfig({
 		},
 	},
 
+	typescript: {
+		typeCheck: 'build',
+	},
+
 	dir: {
 		pages: './src/app/routes',
 		layouts: './src/app/layouts',
