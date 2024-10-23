@@ -1,7 +1,9 @@
 <template>
 	<div class="content">
 		<header>
-			<h1 class="header">ikakprosto.ru</h1>
+			<h1 class="header">
+				<NuxtLink class="header-link" href="/">ikakprosto.ru</NuxtLink>
+			</h1>
 		</header>
 
 		<main class="main">
@@ -19,7 +21,10 @@
 }
 .header {
 	font-size: var(--text-size-h1);
+}
+.header-link {
 	color: var(--color-accent-primary);
+	text-decoration: none;
 }
 .main {
 	max-width: 676px;
