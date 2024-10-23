@@ -36,6 +36,7 @@ defineSlots<{ remove: () => void }>();
 	width: 46px;
 	border-radius: 50%;
 	border: 3px solid var(--color-text);
+	flex-shrink: 0;
 }
 .user-name {
 	font-size: var(--text-size-primary);
