@@ -1,5 +1,14 @@
 <script setup lang="ts">
-const route = useRoute();
+import { PostComments } from 'pages/PostComments';
 
-console.log(route.params.id);
+const {
+	params: { id },
+} = useRoute();
+
+const postIdParam = Array.isArray(id) ? id[0] : id;
+const postId = parseInt(postIdParam, 10);
 </script>
+
+<template>
+	<PostComments :post-id="postId" />
+</template>

@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import { usePostStore } from 'entities/Post';
+
+const postStore = usePostStore();
+
+await useAsyncData('posts', () => postStore.fetchPostList());
+</script>
+
 <template>
 	<NuxtLayout>
 		<NuxtPage />

@@ -22,8 +22,14 @@ interface ApiPostResponse {
 	limit: number;
 }
 
-const fetchPosts = (): Promise<ApiPostResponse> => {
-	const api = createApi(`/posts`);
+const fetchPosts = (limit?: number): Promise<ApiPostResponse> => {
+	const searchParams = new URLSearchParams();
+
+	if (limit !== undefined) {
+		searchParams.set('limit', String(limit));
+	}
+
+	const api = createApi(`/posts?${searchParams.toString()}`);
 
 	return api.get<ApiPostResponse>();
 };

@@ -11,13 +11,23 @@ export const usePostStore = defineStore('post', {
 	state: (): PostState => ({
 		postList: [],
 	}),
+	getters: {
+		getById: state => (id: number) => {
+			const post = state.postList.find(post => post.id === id);
+
+			if (!post) {
+				throw new Error('No post found');
+			}
+
+			return post;
+		},
+	},
 	actions: {
 		async fetchPostList(): Promise<Post[]> {
 			try {
-				const apiPostsResponse = await postApi.fetchPosts();
-				const firstFiveElements = apiPostsResponse.posts.slice(0, 5);
+				const apiPostsResponse = await postApi.fetchPosts(5);
 
-				this.postList = firstFiveElements.map(apiPost => ({
+				this.postList = apiPostsResponse.posts.map(apiPost => ({
 					...apiPost,
 					date: new Date(), // fake date
 					reactions: {

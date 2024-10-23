@@ -9,6 +9,7 @@ export default defineNuxtConfig({
 		entities: '../src/entities',
 		pages: '../src/pages',
 		shared: '../src/shared',
+		widgets: '../src/widgets',
 	},
 
 	runtimeConfig: {
