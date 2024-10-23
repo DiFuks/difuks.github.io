@@ -1,75 +1,60 @@
-# Nuxt Minimal Starter
+# sasflix-test-assignment
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Репозитория для тестового задания в sasflix
 
-## Setup
+## Архитектура
 
-Make sure to install dependencies:
+Проект написан с использованием архитектуры [feature sliced design](https://feature-sliced.design/ru/docs)
+
+## Стек
+
+- [Nuxt 3](https://nuxt.com/docs/getting-started/introduction)
+- [Vue 3](https://vuejs.org/guide/introduction.html)
+- [TypeScript 5](https://www.typescriptlang.org/docs/)
+- [Pinia](https://pinia.vuejs.org/core-concepts/)
+- [Mandle](https://github.com/posva/mande?tab=readme-ov-file#mande----)
+- [Eslint](https://eslint.org/docs/latest/)
+- [Prettier](https://prettier.io/docs/en/)
+
+## Документация Nuxt
+
+Доступная по адресу [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction)
+
+## Установка
 
 ```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
+nvm use
 yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+## Dev-сервер
 
-Start the development server on `http://localhost:3000`:
+Запускается по адресу `http://localhost:3000`:
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
 yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
-
-Build the application for production:
+## Eslint
 
 ```bash
-# npm
-npm run build
+yarn lint
+```
 
-# pnpm
-pnpm build
+## Typescript
 
-# yarn
+Проверка типов происходит только при сборке из-за соображений производительности
+
+## Сборка
+
+Запуск prod-сборки:
+
+```bash
 yarn build
-
-# bun
-bun run build
 ```
 
-Locally preview production build:
+Для локального просмотра prod-сборки:
 
 ```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
 yarn preview
-
-# bun
-bun run preview
 ```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

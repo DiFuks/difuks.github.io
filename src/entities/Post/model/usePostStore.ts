@@ -29,14 +29,14 @@ export const usePostStore = defineStore('post', {
 
 				this.postList = apiPostsResponse.posts.map(apiPost => ({
 					...apiPost,
-					date: new Date(), // fake date
+					date: new Date(), // Фейковая дата. Добавлена, так как в дизайне она выводится
 					reactions: {
 						likes: {
-							isActive: false, // fake like
+							isActive: false, // Фейковый статус. Меняем только на фронте
 							count: apiPost.reactions.likes,
 						},
 						dislikes: {
-							isActive: false, // fake dislike
+							isActive: false, // Фейковый статус. Меняем только на фронте
 							count: apiPost.reactions.dislikes,
 						},
 					},

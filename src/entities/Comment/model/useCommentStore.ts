@@ -20,7 +20,7 @@ export const useCommentStore = defineStore('comment', {
 
 				this.commentList = apiCommentsResponse.comments.map(comment => ({
 					...comment,
-					date: new Date(), // fake date
+					date: new Date(), // Фейковая дата. Добавлена, так как в дизайне она выводится
 				}));
 
 				return this.commentList;
