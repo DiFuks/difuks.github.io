@@ -15,7 +15,7 @@ const { commentList, commentsCount } = storeToRefs(commentStore);
 
 const commentsTitle = computed(() => getPluralCountTitle(commentsCount.value));
 
-await useAsyncData('comments', () => commentStore.fetchCommentsList(postId));
+await useAsyncData(`comments-${postId}`, () => commentStore.fetchCommentsList(postId));
 </script>
 
 <template>
