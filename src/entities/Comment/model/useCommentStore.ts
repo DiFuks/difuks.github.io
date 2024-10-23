@@ -30,5 +30,8 @@ export const useCommentStore = defineStore('comment', {
 				return [];
 			}
 		},
+		remove(commentId: number): void {
+			this.commentList = this.commentList.filter(comment => comment.id !== commentId);
+		},
 	},
 });

@@ -3,6 +3,7 @@ import { usePostStore } from 'entities/Post';
 import { PostWidget } from 'widgets/PostWidget';
 import { CommentCard, useCommentStore } from 'entities/Comment';
 import { getPluralCountTitle } from '../lib/getPluralCountTitle';
+import { RemoveComment } from 'features/removeComment';
 
 const { postId } = defineProps<{ postId: number }>();
 
@@ -25,7 +26,11 @@ await useAsyncData('comments', () => commentStore.fetchCommentsList(postId));
 
 		<ul class="comments-list">
 			<li v-for="comment in commentList" :key="comment.id">
-				<CommentCard :comment="comment" />
+				<CommentCard :comment="comment">
+					<template #remove>
+						<RemoveComment :comment-id="comment.id" />
+					</template>
+				</CommentCard>
 			</li>
 		</ul>
 	</section>

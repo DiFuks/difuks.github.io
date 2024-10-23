@@ -3,11 +3,14 @@ import type { Comment } from '../model/Comment';
 import PublishDate from 'shared/ui/PublishDate.vue';
 
 const { comment } = defineProps<{ comment: Comment }>();
+
+defineSlots<{ remove: () => void }>();
 </script>
 
 <template>
 	<article class="card">
 		<div class="avatar" />
+
 		<div class="content">
 			<div class="user-name">{{ comment.user.fullName }}</div>
 
@@ -15,7 +18,8 @@ const { comment } = defineProps<{ comment: Comment }>();
 
 			<div class="footer">
 				<PublishDate :date="comment.date" />
-				<a class="remove" href="#">Удалить</a>
+
+				<slot name="remove" />
 			</div>
 		</div>
 	</article>
@@ -46,13 +50,5 @@ const { comment } = defineProps<{ comment: Comment }>();
 	display: flex;
 	gap: 20px;
 	align-items: center;
-}
-.remove {
-	font-size: var(--text-size-secondary);
-	color: var(--color-red);
-
-	&:hover {
-		text-decoration: none;
-	}
 }
 </style>

@@ -7,7 +7,7 @@ export const getPluralCountTitle = (count: number): string => {
 		['many', 'комменнтариев'],
 	]);
 
-	const rule = ruOrdinalRules.select(102);
+	const rule = ruOrdinalRules.select(count);
 
 	const commentPlural = commentPlurals.get(rule);
 	return `${count} ${commentPlural}`;
