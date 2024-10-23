@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Comment } from '../model/Comment';
 import PublishDate from 'shared/ui/PublishDate.vue';
+
 const { comment } = defineProps<{ comment: Comment }>();
 </script>
 
@@ -18,7 +19,6 @@ const { comment } = defineProps<{ comment: Comment }>();
 			</div>
 		</div>
 	</article>
-	{{ comment.body }}
 </template>
 
 <style scoped>

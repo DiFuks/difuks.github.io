@@ -10,6 +10,9 @@ export const useCommentStore = defineStore('comment', {
 	state: (): CommentState => ({
 		commentList: [],
 	}),
+	getters: {
+		commentsCount: (state: CommentState) => state.commentList.length,
+	},
 	actions: {
 		async fetchCommentsList(postId: number): Promise<Comment[]> {
 			try {

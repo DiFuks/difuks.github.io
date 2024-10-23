@@ -4,6 +4,7 @@ import PostTags from './PostTags/PostTags.vue';
 import PublishDate from 'shared/ui/PublishDate.vue';
 
 const { post } = defineProps<{ post: Post }>();
+
 defineSlots<{ switchReactions: () => unknown; openComments: () => void }>();
 </script>
 
