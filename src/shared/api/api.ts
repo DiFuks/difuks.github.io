@@ -1,7 +1,7 @@
 import { mande, type MandeInstance } from 'mande';
 
-export const createApi = (url: string): MandeInstance => {
+export const createApi = (): MandeInstance => {
 	const runtimeConfig = useRuntimeConfig();
 
-	return mande(`${runtimeConfig.public.apiUrl}${url}`);
+	return mande(`${runtimeConfig.public.apiUrl}`);
 };

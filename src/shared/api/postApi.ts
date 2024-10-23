@@ -29,9 +29,9 @@ const fetchPosts = (limit?: number): Promise<ApiPostResponse> => {
 		searchParams.set('limit', String(limit));
 	}
 
-	const api = createApi(`/posts?${searchParams.toString()}`);
+	const api = createApi();
 
-	return api.get<ApiPostResponse>();
+	return api.get<ApiPostResponse>(`/posts?${searchParams.toString()}`);
 };
 
 export const postApi = {

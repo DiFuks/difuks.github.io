@@ -22,9 +22,9 @@ interface ApiPostCommentsResponse {
 }
 
 const fetchPostComments = (postId: number): Promise<ApiPostCommentsResponse> => {
-	const api = createApi(`/posts/${postId}/comments`);
+	const api = createApi();
 
-	return api.get<ApiPostCommentsResponse>(postId);
+	return api.get<ApiPostCommentsResponse>(`/posts/${postId}/comments`);
 };
 
 export const postCommentsApi = {
