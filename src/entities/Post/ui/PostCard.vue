@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import type { Post } from '../model/Post';
-import PostCommentsLink from './PostCommentsLink.vue';
 import PostDate from './PostDate.vue';
 import PostTags from './PostTags/PostTags.vue';
 
 const { post } = defineProps<{ post: Post }>();
-defineSlots<{ reactions: () => unknown }>();
+defineSlots<{ switchReactions: () => unknown; openComments: () => void }>();
 </script>
 
 <template>
@@ -15,9 +14,9 @@ defineSlots<{ reactions: () => unknown }>();
 		<div class="body">{{ post.body }}</div>
 
 		<div class="footer">
-			<slot name="reactions" />
+			<slot name="switchReactions" />
 
-			<PostCommentsLink />
+			<slot name="openComments" />
 
 			<PostDate :date="post.date" />
 
