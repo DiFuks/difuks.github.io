@@ -1,10 +1,9 @@
 <script setup lang="ts">
 const { postId } = defineProps<{ postId: number }>();
-const link = `/${postId}/comments`;
 </script>
 
 <template>
-	<NuxtLink class="link" :href="link">Open comments</NuxtLink>
+	<NuxtLink class="link" :to="{ name: 'id-comments', params: { id: postId } }">Open comments</NuxtLink>
 </template>
 
 <style scoped>

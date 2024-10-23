@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// По fsd должен быть в src/app/app.vue, но в Nuxt не работает изменение дефолтного расположения для app https://github.com/nuxt/nuxt/discussions/26751
 import { usePostStore } from 'entities/Post';
 
 const postStore = usePostStore();
