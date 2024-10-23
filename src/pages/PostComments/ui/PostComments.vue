@@ -24,7 +24,7 @@ await useAsyncData('comments', () => commentStore.fetchCommentsList(postId));
 	<section class="comments">
 		<h2 class="comments-header">{{ commentsTitle }}</h2>
 
-		<ul class="comments-list">
+		<TransitionGroup name="comments-list" class="comments-list" tag="ul">
 			<li v-for="comment in commentList" :key="comment.id">
 				<CommentCard :comment="comment">
 					<template #remove>
@@ -32,7 +32,7 @@ await useAsyncData('comments', () => commentStore.fetchCommentsList(postId));
 					</template>
 				</CommentCard>
 			</li>
-		</ul>
+		</TransitionGroup>
 	</section>
 </template>
 
@@ -48,5 +48,14 @@ await useAsyncData('comments', () => commentStore.fetchCommentsList(postId));
 	display: flex;
 	flex-direction: column;
 	gap: 24px;
+}
+.comments-list-enter-active,
+.comments-list-leave-active {
+	transition: all 0.5s ease;
+}
+.comments-list-enter-from,
+.comments-list-leave-to {
+	opacity: 0;
+	transform: translateX(30px);
 }
 </style>
