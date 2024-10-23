@@ -7476,7 +7476,6 @@ __metadata:
     prettier: "npm:^3.3.3"
     typescript: "npm:^5.6.3"
     vue: "npm:latest"
-    vue-router: "npm:latest"
     vue-tsc: "npm:^2.1.6"
   languageName: unknown
   linkType: soft
@@ -10387,7 +10386,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-router@npm:^4.4.5, vue-router@npm:latest":
+"vue-router@npm:^4.4.5":
   version: 4.4.5
   resolution: "vue-router@npm:4.4.5"
   dependencies:
