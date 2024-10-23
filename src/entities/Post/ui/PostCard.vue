@@ -43,5 +43,10 @@ defineSlots<{ switchReactions: () => unknown; openComments: () => void }>();
 	display: flex;
 	gap: 8px;
 	align-items: center;
+	flex-direction: column;
+
+	@media (min-width: 650px) {
+		flex-direction: row;
+	}
 }
 </style>
