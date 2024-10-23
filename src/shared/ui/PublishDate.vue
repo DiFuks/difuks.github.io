@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getPublishDateText } from '../lib/getPublishDateText';
+import { getPublishDateText } from 'shared/lib/getPublishDateText';
 
 const { date } = defineProps<{ date: Date }>();
 
@@ -7,17 +7,17 @@ const dateText = getPublishDateText(date);
 </script>
 
 <template>
-	<span class="post-date">
+	<span class="date">
 		{{ dateText }}
 	</span>
 </template>
 
 <style scoped>
-.post-date {
+.date {
 	font-size: var(--text-size-secondary);
 	color: var(--color-border);
 
-	&:first-letter {
+	&::first-letter {
 		text-transform: uppercase;
 	}
 }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Post } from '../model/Post';
-import PostDate from './PostDate.vue';
 import PostTags from './PostTags/PostTags.vue';
+import PublishDate from 'shared/ui/PublishDate.vue';
 
 const { post } = defineProps<{ post: Post }>();
 defineSlots<{ switchReactions: () => unknown; openComments: () => void }>();
@@ -18,7 +18,7 @@ defineSlots<{ switchReactions: () => unknown; openComments: () => void }>();
 
 			<slot name="openComments" />
 
-			<PostDate :date="post.date" />
+			<PublishDate :date="post.date" />
 
 			<PostTags :tags="post.tags" />
 		</div>

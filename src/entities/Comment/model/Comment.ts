@@ -6,4 +6,5 @@ export interface Comment {
 	postId: number;
 	likes: number;
 	user: CommentUser;
+	date: Date;
 }

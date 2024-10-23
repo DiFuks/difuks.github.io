@@ -15,7 +15,10 @@ export const useCommentStore = defineStore('comment', {
 			try {
 				const apiCommentsResponse = await postCommentsApi.fetchPostComments(postId);
 
-				this.commentList = apiCommentsResponse.comments;
+				this.commentList = apiCommentsResponse.comments.map(comment => ({
+					...comment,
+					date: new Date(), // fake date
+				}));
 
 				return this.commentList;
 			} catch (error) {
