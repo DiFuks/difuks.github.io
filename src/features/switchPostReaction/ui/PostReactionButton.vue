@@ -1,18 +1,24 @@
 <script setup lang="ts">
+import type { ReactionType } from 'entities/Post';
+
 const { buttonType, count, isActive } = defineProps<{
-	buttonType: 'like' | 'dislike';
+	buttonType: ReactionType;
 	count: number;
 	isActive: boolean;
 }>();
 
+defineEmits<{
+	(event: 'click'): void;
+}>();
+
 const computedParams = computed(() => ({
 	cssClass: [`button-${buttonType}`, { active: isActive }],
-	text: buttonType === 'dislike' ? 'Trash' : 'Like',
+	text: buttonType === 'dislikes' ? 'Trash' : 'Like',
 }));
 </script>
 
 <template>
-	<button class="button" :class="[computedParams.cssClass]">
+	<button class="button" :class="[computedParams.cssClass]" @click="$emit('click')">
 		<span class="text">{{ computedParams.text }}</span>
 		<span class="count">{{ count }}</span>
 	</button>
@@ -37,22 +43,22 @@ const computedParams = computed(() => ({
 		height: 11px;
 	}
 
-	&.button-like {
+	&.button-likes {
 		border-bottom-left-radius: 16px;
 		border-top-left-radius: 16px;
 		padding-left: 12px;
 
 		&:before {
-			background-image: url(../assets/likeIcon.svg);
+			background-image: url(./assets/likeIcon.svg);
 		}
 	}
-	&.button-dislike {
+	&.button-dislikes {
 		border-bottom-right-radius: 16px;
 		border-top-right-radius: 16px;
 		padding-right: 12px;
 
 		&:before {
-			background-image: url(../assets/dislikeButton.svg);
+			background-image: url(./assets/dislikeButton.svg);
 		}
 	}
 	.text {
@@ -65,11 +71,10 @@ const computedParams = computed(() => ({
 	}
 }
 
-.button:hover:not(.active),
-.button.active:not(:hover) {
+.button.active {
 	color: var(--color-white);
 
-	&.button-like {
+	&.button-likes {
 		background-color: var(--color-red);
 
 		.count {
@@ -77,15 +82,15 @@ const computedParams = computed(() => ({
 		}
 
 		&:before {
-			background-image: url(../assets/likeIcon-active.svg);
+			background-image: url(./assets/likeIcon-active.svg);
 		}
 	}
 
-	&.button-dislike {
+	&.button-dislikes {
 		background-color: var(--color-text);
 
 		&:before {
-			background-image: url(../assets/dislikeButton-active.svg);
+			background-image: url(./assets/dislikeButton-active.svg);
 		}
 	}
 }
