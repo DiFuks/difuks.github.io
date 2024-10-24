@@ -2,7 +2,9 @@ import { defineStore } from 'pinia';
 import { postCommentsApi } from 'shared/api';
 import type { Comment } from './Comment';
 
-type CommentsList = Record<number, Comment[]>;
+type PostId = number;
+
+type CommentsList = Record<PostId, Comment[]>;
 
 interface CommentState {
 	commentList: CommentsList;
