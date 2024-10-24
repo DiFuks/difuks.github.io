@@ -23,9 +23,9 @@ export const usePostStore = defineStore('post', {
 		},
 	},
 	actions: {
-		async fetchPostList(): Promise<Post[]> {
+		async fetchPostList(): Promise<void> {
 			try {
-				const apiPostsResponse = await postApi.fetchPosts(5);
+				const apiPostsResponse = await postApi.useFetchPosts(5);
 
 				this.postList = apiPostsResponse.posts.map(apiPost => ({
 					...apiPost,
@@ -41,12 +41,8 @@ export const usePostStore = defineStore('post', {
 						},
 					},
 				}));
-
-				return this.postList;
 			} catch (error) {
 				console.error(error);
-
-				return [];
 			}
 		},
 		switchReaction(postId: number, type: ReactionType): void {

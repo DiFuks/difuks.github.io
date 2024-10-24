@@ -1,4 +1,4 @@
-import { createApi } from './api';
+import { useApiFetch } from './useApiFetch';
 
 interface ApiPostReactions {
 	likes: number;
@@ -22,18 +22,20 @@ interface ApiPostResponse {
 	limit: number;
 }
 
-const fetchPosts = (limit?: number): Promise<ApiPostResponse> => {
-	const searchParams = new URLSearchParams();
+const useFetchPosts = async (limit?: number): Promise<ApiPostResponse> => {
+	const { data, error } = await useApiFetch<ApiPostResponse>(`/posts`, {
+		query: {
+			limit,
+		},
+	});
 
-	if (limit !== undefined) {
-		searchParams.set('limit', String(limit));
+	if (error.value || data.value === null) {
+		throw new Error('Could not fetch posts'); // Здесь должна быть адекватная обработка ошибок
 	}
 
-	const api = createApi();
-
-	return api.get<ApiPostResponse>(`/posts?${searchParams.toString()}`);
+	return data.value;
 };
 
 export const postApi = {
-	fetchPosts,
+	useFetchPosts,
 };

@@ -4,7 +4,7 @@ import { usePostStore } from 'entities/Post';
 
 const postStore = usePostStore();
 
-await useAsyncData('posts', () => postStore.fetchPostList());
+await postStore.fetchPostList();
 </script>
 
 <template>

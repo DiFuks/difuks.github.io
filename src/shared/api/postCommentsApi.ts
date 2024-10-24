@@ -1,4 +1,4 @@
-import { createApi } from './api';
+import { useApiFetch } from './useApiFetch';
 
 interface ApiPostCommentUser {
 	id: number;
@@ -21,12 +21,16 @@ interface ApiPostCommentsResponse {
 	limit: number;
 }
 
-const fetchPostComments = (postId: number): Promise<ApiPostCommentsResponse> => {
-	const api = createApi();
+const useFetchPostComments = async (postId: number): Promise<ApiPostCommentsResponse> => {
+	const { data, error } = await useApiFetch<ApiPostCommentsResponse>(`/posts/${postId}/comments`);
 
-	return api.get<ApiPostCommentsResponse>(`/posts/${postId}/comments`);
+	if (error.value || data.value === null) {
+		throw new Error('Could not fetch comments'); // Здесь должна быть адекватная обработка ошибок
+	}
+
+	return data.value;
 };
 
 export const postCommentsApi = {
-	fetchPostComments,
+	useFetchPostComments,
 };
