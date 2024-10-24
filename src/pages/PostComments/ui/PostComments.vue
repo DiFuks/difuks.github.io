@@ -19,21 +19,25 @@ await commentStore.fetchCommentsList(postId);
 </script>
 
 <template>
-	<PostWidget :post="getById(postId)" />
+	<div>
+		<section>
+			<PostWidget :post="getById(postId)" />
+		</section>
 
-	<section class="comments">
-		<h2 class="comments-header">{{ commentsTitle }}</h2>
+		<section class="comments">
+			<h2 class="comments-header">{{ commentsTitle }}</h2>
 
-		<TransitionGroup name="comments-list" class="comments-list" tag="ul">
-			<li v-for="comment in getListByPostId(postId)" :key="comment.id">
-				<CommentCard :comment="comment">
-					<template #remove>
-						<RemoveComment :post-id="postId" :comment-id="comment.id" />
-					</template>
-				</CommentCard>
-			</li>
-		</TransitionGroup>
-	</section>
+			<TransitionGroup name="comments-list" class="comments-list" tag="ul">
+				<li v-for="comment in getListByPostId(postId)" :key="comment.id">
+					<CommentCard :comment="comment">
+						<template #remove>
+							<RemoveComment :post-id="postId" :comment-id="comment.id" />
+						</template>
+					</CommentCard>
+				</li>
+			</TransitionGroup>
+		</section>
+	</div>
 </template>
 
 <style scoped>
