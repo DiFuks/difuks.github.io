@@ -7,6 +7,8 @@ export default defineNuxtConfig({
 		pageTransition: { name: 'page', mode: 'out-in' },
 	},
 
+	srcDir: './src/app',
+
 	alias: {
 		app: '../src/app',
 		features: '../src/features',
@@ -27,8 +29,7 @@ export default defineNuxtConfig({
 	},
 
 	dir: {
-		pages: './src/app/routes',
-		layouts: './src/app/layouts',
+		pages: './routes',
 	},
 
 	modules: ['@pinia/nuxt', '@nuxt/eslint'],
