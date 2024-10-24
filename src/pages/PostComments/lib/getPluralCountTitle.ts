@@ -4,7 +4,7 @@ export const getPluralCountTitle = (count: number): string => {
 	const commentPlurals = new Map([
 		['one', 'комментарий'],
 		['few', 'комментария'],
-		['many', 'комменнтариев'],
+		['many', 'комментариев'],
 	]);
 
 	const rule = ruOrdinalRules.select(count);
