@@ -6882,13 +6882,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mande@npm:^2.0.9":
-  version: 2.0.9
-  resolution: "mande@npm:2.0.9"
-  checksum: 10c0/e5de1d70600db15ded7025fe13dc729a78fbaa7518b0520a9f9282b9c633d1f636ec857b9933bc81de20e27e746a0f5fd94d56d586bca047ee4c064f3a302375
-  languageName: node
-  linkType: hard
-
 "mdn-data@npm:2.0.28":
   version: 2.0.28
   resolution: "mdn-data@npm:2.0.28"
@@ -7471,7 +7464,6 @@ __metadata:
     eslint-config-prettier: "npm:^9.1.0"
     eslint-plugin-import: "npm:^2.31.0"
     eslint-plugin-prettier: "npm:^5.2.1"
-    mande: "npm:^2.0.9"
     nuxt: "npm:^3.13.2"
     prettier: "npm:^3.3.3"
     typescript: "npm:^5.6.3"

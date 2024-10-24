@@ -12,13 +12,12 @@
 - [Vue 3](https://vuejs.org/guide/introduction.html)
 - [TypeScript 5](https://www.typescriptlang.org/docs/)
 - [Pinia](https://pinia.vuejs.org/core-concepts/)
-- [Mandle](https://github.com/posva/mande?tab=readme-ov-file#mande----)
 - [Eslint](https://eslint.org/docs/latest/)
 - [Prettier](https://prettier.io/docs/en/)
 
 ## Документация Nuxt
 
-Доступная по адресу [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction)
+Доступна по адресу [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction)
 
 ## Установка
 
