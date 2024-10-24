@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { useCommentStore } from 'entities/Comment';
 
-const { commentId } = defineProps<{ commentId: number }>();
+const { postId, commentId } = defineProps<{ postId: number; commentId: number }>();
 const { remove } = useCommentStore();
 </script>
 
 <template>
-	<a class="remove" href="#" @click.prevent="remove(commentId)">Удалить</a>
+	<a class="remove" href="#" @click.prevent="remove(postId, commentId)">Удалить</a>
 </template>
 
 <style scoped>

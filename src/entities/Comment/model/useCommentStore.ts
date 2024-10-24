@@ -2,36 +2,43 @@ import { defineStore } from 'pinia';
 import { postCommentsApi } from 'shared/api';
 import type { Comment } from './Comment';
 
+type CommentsList = Record<number, Comment[]>;
+
 interface CommentState {
-	commentList: Comment[];
+	commentList: CommentsList;
 }
 
 export const useCommentStore = defineStore('comment', {
 	state: (): CommentState => ({
-		commentList: [],
+		commentList: {},
 	}),
 	getters: {
-		commentsCount: (state: CommentState) => state.commentList.length,
+		getListByPostId: state => (postId: number) => state.commentList[postId] ?? [],
+		getCommentsCount: state => (postId: number) => state.commentList[postId]?.length ?? 0,
 	},
 	actions: {
 		async fetchCommentsList(postId: number): Promise<Comment[]> {
+			if (this.commentList[postId]) {
+				return this.commentList[postId];
+			}
+
 			try {
 				const apiCommentsResponse = await postCommentsApi.fetchPostComments(postId);
 
-				this.commentList = apiCommentsResponse.comments.map(comment => ({
+				this.commentList[postId] = apiCommentsResponse.comments.map(comment => ({
 					...comment,
 					date: new Date(), // Фейковая дата. Добавлена, так как в дизайне она выводится
 				}));
 
-				return this.commentList;
+				return this.commentList[postId];
 			} catch (error) {
 				console.error(error);
 
 				return [];
 			}
 		},
-		remove(commentId: number): void {
-			this.commentList = this.commentList.filter(comment => comment.id !== commentId);
+		remove(postId: number, commentId: number): void {
+			this.commentList[postId] = this.commentList[postId]?.filter(comment => comment.id !== commentId);
 		},
 	},
 });

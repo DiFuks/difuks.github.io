@@ -11,9 +11,9 @@ const postStore = usePostStore();
 const commentStore = useCommentStore();
 
 const { getById } = storeToRefs(postStore);
-const { commentList, commentsCount } = storeToRefs(commentStore);
+const { getListByPostId, getCommentsCount } = storeToRefs(commentStore);
 
-const commentsTitle = computed(() => getPluralCountTitle(commentsCount.value));
+const commentsTitle = computed(() => getPluralCountTitle(getCommentsCount.value(postId)));
 
 await useAsyncData(`comments-${postId}`, () => commentStore.fetchCommentsList(postId));
 </script>
@@ -25,10 +25,10 @@ await useAsyncData(`comments-${postId}`, () => commentStore.fetchCommentsList(po
 		<h2 class="comments-header">{{ commentsTitle }}</h2>
 
 		<TransitionGroup name="comments-list" class="comments-list" tag="ul">
-			<li v-for="comment in commentList" :key="comment.id">
+			<li v-for="comment in getListByPostId(postId)" :key="comment.id">
 				<CommentCard :comment="comment">
 					<template #remove>
-						<RemoveComment :comment-id="comment.id" />
+						<RemoveComment :post-id="postId" :comment-id="comment.id" />
 					</template>
 				</CommentCard>
 			</li>
