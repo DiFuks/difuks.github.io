@@ -1,8 +1,6 @@
 export type ReactionType = 'likes' | 'dislikes';
 
-export interface Reaction {
-	isActive: boolean;
-	count: number;
+export interface Reactions {
+	activeType: ReactionType | null;
+	types: Record<ReactionType, number>;
 }
-
-export type Reactions = Record<ReactionType, Reaction>;

@@ -14,14 +14,14 @@ const switchReaction = (type: ReactionType): void => {
 <template>
 	<div class="post-reactions">
 		<ReactionButton
-			:is-active="reactions.likes.isActive"
-			:count="reactions.likes.count"
+			:is-active="reactions.activeType === 'likes'"
+			:count="reactions.types.likes"
 			button-type="likes"
 			@click="switchReaction('likes')"
 		/>
 		<ReactionButton
-			:is-active="reactions.dislikes.isActive"
-			:count="reactions.dislikes.count"
+			:is-active="reactions.activeType === 'dislikes'"
+			:count="reactions.types.dislikes"
 			button-type="dislikes"
 			@click="switchReaction('dislikes')"
 		/>

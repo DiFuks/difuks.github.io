@@ -31,13 +31,10 @@ export const usePostStore = defineStore('post', {
 					...apiPost,
 					date: new Date(), // Фейковая дата. Добавлена, так как в дизайне она выводится
 					reactions: {
-						likes: {
-							isActive: false, // Фейковый статус. Меняем только на фронте
-							count: apiPost.reactions.likes,
-						},
-						dislikes: {
-							isActive: false, // Фейковый статус. Меняем только на фронте
-							count: apiPost.reactions.dislikes,
+						activeType: null, // Фейковый статус. Меняем только на фронте
+						types: {
+							likes: apiPost.reactions.likes,
+							dislikes: apiPost.reactions.dislikes,
 						},
 					},
 				}));
@@ -45,17 +42,33 @@ export const usePostStore = defineStore('post', {
 				console.error(error);
 			}
 		},
-		switchReaction(postId: number, type: ReactionType): void {
+		switchReaction(postId: number, newReactionType: ReactionType): void {
 			const post = this.postList.find(post => post.id === postId);
 
 			if (!post) {
 				return;
 			}
 
-			const currentState = post.reactions[type];
+			const reactionsTypes = post.reactions.types;
+			const prevReactionType = post.reactions.activeType;
 
-			currentState.isActive = !currentState.isActive;
-			currentState.count = currentState.isActive ? currentState.count + 1 : currentState.count - 1;
+			if (prevReactionType === newReactionType) {
+				post.reactions.activeType = null;
+			} else {
+				post.reactions.activeType = newReactionType;
+			}
+
+			Object.entries(reactionsTypes).forEach(([key, count]) => {
+				const reactionType = key as ReactionType;
+
+				if (prevReactionType === reactionType) {
+					reactionsTypes[reactionType] = count - 1;
+				}
+
+				if (prevReactionType !== reactionType && reactionType === newReactionType) {
+					reactionsTypes[reactionType] = count + 1;
+				}
+			});
 		},
 	},
 });
