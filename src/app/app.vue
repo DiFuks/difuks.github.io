@@ -56,4 +56,19 @@ button {
 	opacity: 0;
 	filter: blur(3px);
 }
+
+.sub-header {
+	margin-bottom: 32px;
+}
+
+.content-container {
+	width: 676px;
+}
+
+.square-list {
+	list-style: square;
+	padding-left: 24px;
+	margin-bottom: 32px;
+	margin-top: 8px;
+}
 </style>

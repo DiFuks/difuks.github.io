@@ -32,5 +32,9 @@ export default defineNuxtConfig({
 		pages: './routes',
 	},
 
+	routeRules: {
+		'/admin/**': { ssr: false },
+	},
+
 	modules: ['@pinia/nuxt', '@nuxt/eslint'],
 });

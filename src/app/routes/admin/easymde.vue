@@ -1,0 +1,70 @@
+<template>
+	<div class="content-container">
+		<h2 class="sub-header">EasyMDE</h2>
+
+		<ul class="square-list">
+			<li>
+				<strong>Плюсы</strong>
+				<ul class="square-list">
+					<li>Есть всё основное – жирный, курсив, заголовки, списки, ссылки</li>
+					<li>Отображает preview</li>
+					<li>Имеет fullscreen</li>
+					<li>Поддерживает хоткеи</li>
+					<li>Позволяет легко кастомизировать стили и скрывать ненужное</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Минусы</strong>
+				<ul class="square-list">
+					<li>Очень похож на wysiwyg. Зачем-то занимается стилизацией даже без preview</li>
+					<li>
+						Достаточно громоздкий. Много всего, что нам сейчас не нужно. Например, загрузка картинок внутрь
+						поста, проверка орфографии. Ненужный функционал можно скрыть, но может что угодно вылезти, что
+						нам будет мешать и усложнять работу
+					</li>
+					<li>
+						Не очень нравится как работает. Например, если сделать всю строку жирным и выделить её, нет
+						возможности убрать "жирность"
+					</li>
+					<li>В некоторых ситуациях путает жирный и курсив</li>
+				</ul>
+			</li>
+		</ul>
+
+		<textarea ref="textareaElement"></textarea>
+	</div>
+</template>
+
+<script setup lang="ts">
+import EasyMDE from 'easymde';
+import 'easymde/dist/easymde.min.css';
+
+const textareaElement = ref<HTMLTextAreaElement>();
+
+onMounted(() => {
+	new EasyMDE({
+		element: textareaElement.value,
+		hideIcons: ['image', 'quote', 'heading'],
+		sideBySideFullscreen: false,
+		spellChecker: false,
+		styleSelectedText: false,
+	});
+});
+</script>
+
+<style scoped>
+.header {
+	margin-bottom: 32px;
+}
+
+.editor-container {
+	width: 676px;
+}
+
+.list {
+	list-style: square;
+	padding-left: 24px;
+	margin-bottom: 32px;
+	margin-top: 8px;
+}
+</style>
