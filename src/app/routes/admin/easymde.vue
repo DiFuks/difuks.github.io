@@ -1,6 +1,8 @@
 <template>
 	<div class="content-container">
-		<h2 class="sub-header">EasyMDE</h2>
+		<h2 class="sub-header">
+			<a href="https://github.com/Ionaru/easy-markdown-editor" target="_blank">EasyMDE</a>
+		</h2>
 
 		<ul class="square-list">
 			<li>
@@ -27,6 +29,7 @@
 						возможности убрать "жирность"
 					</li>
 					<li>В некоторых ситуациях путает жирный и курсив</li>
+					<li>Не очень активно поддерживается. 224 issue и всего 2 коммита за год</li>
 				</ul>
 			</li>
 		</ul>
