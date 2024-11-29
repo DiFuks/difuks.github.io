@@ -65,10 +65,9 @@ button {
 	width: 676px;
 }
 
-.square-list {
-	list-style: square;
+.default-list {
+	list-style: revert;
 	padding-left: 24px;
-	margin-bottom: 32px;
-	margin-top: 8px;
+	margin-bottom: 24px;
 }
 </style>

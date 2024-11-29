@@ -4,10 +4,10 @@
 			<a href="https://github.com/Ionaru/easy-markdown-editor" target="_blank">EasyMDE</a>
 		</h2>
 
-		<ul class="square-list">
+		<ul class="default-list">
 			<li>
 				<strong>Плюсы</strong>
-				<ul class="square-list">
+				<ul class="default-list">
 					<li>Есть всё основное – жирный, курсив, заголовки, списки, ссылки</li>
 					<li>Отображает preview</li>
 					<li>Имеет fullscreen</li>
@@ -17,7 +17,7 @@
 			</li>
 			<li>
 				<strong>Минусы</strong>
-				<ul class="square-list">
+				<ul class="default-list">
 					<li>Очень похож на wysiwyg. Зачем-то занимается стилизацией даже без preview</li>
 					<li>
 						Достаточно громоздкий. Много всего, что нам сейчас не нужно. Например, загрузка картинок внутрь
@@ -51,23 +51,52 @@ onMounted(() => {
 		sideBySideFullscreen: false,
 		spellChecker: false,
 		styleSelectedText: false,
+		initialValue: `
+# Заголовок первого уровня
+
+Текст
+
+[ссылка](https://google.com)
+
+## Заголовок второго уровня
+
+**Жирный текст**
+*Курсив*
+***Жирный курсив***
+~~Зачеркнутый~~
+
+- Марикрованный список
+- Список
+  - Вложенный список
+  - Вложенный список
+    - Вложенный список
+    - Вложенный список
+
+1. Нумерованный список
+2. Список
+   1. Вложенный список
+   2. Вложенный список
+      1. Вложенный список
+      2. Вложенный список
+`,
 	});
 });
 </script>
 
 <style scoped>
-.header {
-	margin-bottom: 32px;
-}
-
-.editor-container {
-	width: 676px;
-}
-
-.list {
-	list-style: square;
-	padding-left: 24px;
-	margin-bottom: 32px;
-	margin-top: 8px;
+.content-container {
+	& ::v-deep(h1),
+	& ::v-deep(h2),
+	& ::v-deep(h3),
+	& ::v-deep(h4),
+	& ::v-deep(h5),
+	& ::v-deep(h6) {
+		margin-bottom: 8px;
+	}
+	& ::v-deep(.editor-preview-full) ul,
+	& ::v-deep(.editor-preview-full) ol {
+		list-style: revert;
+		padding: revert;
+	}
 }
 </style>
